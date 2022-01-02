@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+
+<property>
+      <name>hive.exec.post.hooks</name>
+      <value>org.apache.atlas.hive.hook.HiveHook</value>
+</property>
+
+<!-- HiveServer2启用Kerberos认证 -->
+<property>
+    <name>hive.server2.authentication</name>
+    <value>kerberos</value>
+</property>
+
+<!-- HiveServer2服务的Kerberos主体 -->
+<property>
+    <name>hive.server2.authentication.kerberos.principal</name>
+    <value>hive/hadoop02@CODE1997.COM</value>
+</property>
+
+<!-- HiveServer2服务的Kerberos密钥文件 -->
+<property>
+    <name>hive.server2.authentication.kerberos.keytab</name>
+    <value>/etc/security/keytab/hive.service.keytab</value>
+</property>
+
+<!-- Metastore启动认证 -->
+<property>
+    <name>hive.metastore.sasl.enabled</name>
+    <value>true</value>
+</property>
+<!-- Metastore Kerberos密钥文件 -->
+<property>
+    <name>hive.metastore.kerberos.keytab.file</name>
+    <value>/etc/security/keytab/hive.service.keytab</value>
+</property>
+<!-- Metastore Kerberos主体 -->
+<property>
+    <name>hive.metastore.kerberos.principal</name>
+    <value>hive/hadoop02@CODE1997.COM</value>
+</property>
+
+
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://hadoop02:3306/metastore?useSSL=false</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>root</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>19971001</value>
+    </property>
+
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>/user/hive/warehouse</value>
+    </property>
+
+    <property>
+        <name>hive.metastore.schema.verification</name>
+        <value>false</value>
+    </property>
+
+    <property>
+    <name>hive.server2.thrift.port</name>
+    <value>10000</value>
+    </property>
+
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>hadoop02</value>
+    </property>
+	    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://hadoop02:8020</value>
+    </property>
+
+    <property>
+        <name>hive.metastore.event.db.notification.api.auth</name>
+        <value>false</value>
+    </property>
+    
+    <property>
+        <name>hive.cli.print.header</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hive.cli.print.current.db</name>
+        <value>true</value>
+    </property>
+	
+	<!--Spark依赖位置（注意：端口号8020必须和namenode的端口号一致）-->
+	<property>
+		<name>spark.yarn.jars</name>
+		<value>hdfs://hadoop02:8020/jars/spark-jars/*</value>
+	</property>
+	  
+	<!--Hive执行引擎-->
+	<property>
+		<name>hive.execution.engine</name>
+		<value>spark</value>
+	</property>
+	
+	
+	<!--
+	<property>
+		<name>hive.security.authorization.enabled</name>
+		<value>true</value>
+	</property>
+ 
+	<property>
+		<name>hive.server2.enable.doAs</name>
+		<value>false</value>
+	</property>
+ 
+	<property>
+		<name>hive.users.in.admin.role</name>
+		<value>code1997</value>
+	</property>
+ 
+	<property>
+		<name>hive.security.authorization.manager</name> 
+		<value>org.apache.hadoop.hive.ql.security.authorization.plugin.sqlstd.SQLStdHiveAuthorizerFactory</value>
+	</property>
+ 
+	<property>
+		<name>hive.security.authenticator.manager</name> 
+		<value>org.apache.hadoop.hive.ql.security.SessionStateUserAuthenticator</value>
+	</property> -->
+	
+	
+
+</configuration>
