@@ -5,10 +5,10 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.{SaveMode, SparkSession}
 
 object PartitionTuning {
-  def main( args: Array[String] ): Unit = {
+  def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf().setAppName("PartitionTuning")
-      .set("spark.sql.autoBroadcastJoinThreshold", "-1")//为了演示效果，先禁用了广播join
-//      .setMaster("local[*]")
+      .set("spark.sql.autoBroadcastJoinThreshold", "-1") //为了演示效果，先禁用了广播join
+      .setMaster("local[*]")
       .set("spark.sql.shuffle.partitions", "36")
     val sparkSession: SparkSession = InitUtil.initSparkSession(sparkConf)
 
@@ -33,9 +33,6 @@ object PartitionTuning {
   }
 
 }
-
-
-
 
 
 /*

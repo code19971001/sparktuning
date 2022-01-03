@@ -9,10 +9,10 @@ import org.apache.spark.storage.StorageLevel
 object RddCacheKryoDemo {
 
 
-  def main( args: Array[String] ): Unit = {
+  def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf()
       .setAppName("RddCacheKryoDemo")
-//      .setMaster("local[*]")
+      .setMaster("local[*]")
       .set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
       .registerKryoClasses(Array(classOf[CoursePay]))
 
